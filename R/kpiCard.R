@@ -5,11 +5,14 @@
 #' @import htmlwidgets
 #'
 #' @export
-kpiCard <- function(message, width = NULL, height = NULL, elementId = NULL) {
+kpiCard <- function(title, new.value, old.value,
+                    width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    message = message
+    title = title,
+    new_value = new.value,
+    old_value = old.value
   )
 
   # create widget

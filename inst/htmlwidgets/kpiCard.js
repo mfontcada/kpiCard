@@ -12,6 +12,10 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
+        // Recover data
+        var change_num = x.new_value - x.old_value;
+        var change_pt = (Math.round(change_num / x.old_value * 100)).toFixed(2);
+
         // Remove previous
         el.innerHTML = "";
 
@@ -33,7 +37,7 @@ HTMLWidgets.widget({
           .style("padding", "8px")
           .style("line-height", "16px")
           .style("font-size", "0.8em")
-          .html("title");
+          .html(x.title);
 
         // Content
         var content = card.append("div")
@@ -57,7 +61,7 @@ HTMLWidgets.widget({
             .style("padding-bottom", "2vw")
             .style("text-align", "center")
             .style("font-size", "5vw")
-            .html("new value");
+            .html(x.new_value);
 
         // Old value
         values.append("div")
@@ -70,7 +74,7 @@ HTMLWidgets.widget({
             .style("padding-top", "2vw")
             .style("text-align", "center")
             .style("font-size", "2.5vw")
-            .html("old value");
+            .html(x.old_value);
 
         // Change
         var change = content.append("div")
@@ -89,7 +93,7 @@ HTMLWidgets.widget({
             .style("padding-bottom", "2vw")
             .style("text-align", "center")
             .style("font-size", "5vw")
-            .html("change percent");
+            .html(change_pt + "%");
 
         // Difference
         change.append("div")
@@ -102,7 +106,13 @@ HTMLWidgets.widget({
             .style("padding-top", "2vw")
             .style("text-align", "center")
             .style("font-size", "2.5vw")
-            .html("change number");
+            .html(function() {
+              if (change_num > 0) {
+                return "(" + "+" + change_num + ")";
+              } else {
+                return "(" + change_num + ")";
+              }
+            });
 
       },
 

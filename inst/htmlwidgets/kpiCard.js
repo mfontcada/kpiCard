@@ -14,7 +14,16 @@ HTMLWidgets.widget({
 
         // Recover data
         var change_num = x.new_value - x.old_value;
-        var change_pt = (Math.round(change_num / x.old_value * 100)).toFixed(2);
+        var change_pt = change_num / x.old_value * 100;
+        var change_color = "black",
+          change_symbol = "";
+        if (change_pt > 0) {
+          change_color = "green";
+          change_symbol = "&#9650;";
+        } else if (change_pt < 0) {
+          change_color = "red";
+          change_symbol = "&#9660;";
+        }
 
         // Remove previous
         el.innerHTML = "";
@@ -61,7 +70,7 @@ HTMLWidgets.widget({
             .style("padding-bottom", "2vw")
             .style("text-align", "center")
             .style("font-size", "5vw")
-            .html(x.new_value);
+            .html(x.new_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
         // Old value
         values.append("div")
@@ -74,7 +83,7 @@ HTMLWidgets.widget({
             .style("padding-top", "2vw")
             .style("text-align", "center")
             .style("font-size", "2.5vw")
-            .html(x.old_value);
+            .html(x.old_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
         // Change
         var change = content.append("div")
@@ -93,7 +102,8 @@ HTMLWidgets.widget({
             .style("padding-bottom", "2vw")
             .style("text-align", "center")
             .style("font-size", "5vw")
-            .html(change_pt + "%");
+            .html(change_symbol + " " + Math.abs(change_pt).toFixed(1) + "%")
+            .style("color", change_color);
 
         // Difference
         change.append("div")
@@ -108,11 +118,12 @@ HTMLWidgets.widget({
             .style("font-size", "2.5vw")
             .html(function() {
               if (change_num > 0) {
-                return "(" + "+" + change_num + ")";
+                return "(" + "+" + change_num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ")";
               } else {
-                return "(" + change_num + ")";
+                return "(" + change_num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ")";
               }
-            });
+            })
+            .style("color", change_color);
 
       },
 

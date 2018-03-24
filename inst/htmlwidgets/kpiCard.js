@@ -32,14 +32,13 @@ HTMLWidgets.widget({
         var card = d3.select(el).append("div")
           .style("width", "100%")
           .style("height", "100%")
-          .style("font-family", 'Verdana, Geneva, sans-serif')
-          .style("border", "1px solid #000");
+          .style("font-family", 'Verdana, Geneva, sans-serif');
 
         // Header
         var header = card.append("div")
           .style("width", "100%")
           .style("height", "32px")
-          .style("border-bottom", "1px solid #000");
+          .style("border-bottom", "1px solid #DDD");
 
         // Title
         var title = header.append("div")
@@ -67,9 +66,9 @@ HTMLWidgets.widget({
           .append("div")
             .style("display", "table-cell")
             .style("vertical-align", "bottom")
-            .style("padding-bottom", "2vw")
+            .style("padding-bottom", "6px")
             .style("text-align", "center")
-            .style("font-size", "5vw")
+            .style("font-size", "1.2em")
             .html(x.new_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
         // Old value
@@ -80,9 +79,9 @@ HTMLWidgets.widget({
           .append("div")
             .style("display", "table-cell")
             .style("vertical-align", "top")
-            .style("padding-top", "2vw")
+            .style("padding-top", "3px")
             .style("text-align", "center")
-            .style("font-size", "2.5vw")
+            .style("font-size", "0.8em")
             .html(x.old_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
         // Change
@@ -99,9 +98,9 @@ HTMLWidgets.widget({
           .append("div")
             .style("display", "table-cell")
             .style("vertical-align", "bottom")
-            .style("padding-bottom", "2vw")
+            .style("padding-bottom", "6px")
             .style("text-align", "center")
-            .style("font-size", "5vw")
+            .style("font-size", "1.2em")
             .html(change_symbol + " " + Math.abs(change_pt).toFixed(1) + "%")
             .style("color", change_color);
 
@@ -113,9 +112,9 @@ HTMLWidgets.widget({
           .append("div")
             .style("display", "table-cell")
             .style("vertical-align", "top")
-            .style("padding-top", "2vw")
+            .style("padding-top", "3px")
             .style("text-align", "center")
-            .style("font-size", "2.5vw")
+            .style("font-size", "0.8em")
             .html(function() {
               if (change_num > 0) {
                 return "(" + "+" + change_num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ")";

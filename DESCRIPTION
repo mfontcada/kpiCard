@@ -3,7 +3,7 @@ Title: KPI Card
 Version: 0.0.0.9000
 Authors@R: person("Manuel", "Fontenla Cadavid", email = "manu.fontenla@gmail.com", role = c("aut", "cre"))
 Description: Simple htmlwidget for R to show an indicator and its evolution.
-Depends: R (>= 3.4.4)
+Depends: R (>= 3.4)
 License: MIT
 Encoding: UTF-8
 LazyData: true

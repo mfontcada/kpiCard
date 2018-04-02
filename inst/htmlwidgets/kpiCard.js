@@ -69,7 +69,7 @@ HTMLWidgets.widget({
             .style("padding-bottom", "6px")
             .style("text-align", "center")
             .style("font-size", "1.2em")
-            .html(x.new_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+            .html(x.new_value.toLocaleString(x.locale));
 
         // Old value
         values.append("div")
@@ -82,7 +82,7 @@ HTMLWidgets.widget({
             .style("padding-top", "3px")
             .style("text-align", "center")
             .style("font-size", "0.8em")
-            .html(x.old_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+            .html(x.old_value.toLocaleString(x.locale));
 
         // Change
         var change = content.append("div")
@@ -101,7 +101,7 @@ HTMLWidgets.widget({
             .style("padding-bottom", "6px")
             .style("text-align", "center")
             .style("font-size", "1.2em")
-            .html(change_symbol + " " + Math.abs(change_pt).toFixed(1) + "%")
+            .html(change_symbol + " " + (Math.round(Math.abs(change_pt) * 10) / 10).toLocaleString(x.locale) + "%")
             .style("color", change_color);
 
         // Difference
@@ -117,9 +117,9 @@ HTMLWidgets.widget({
             .style("font-size", "0.8em")
             .html(function() {
               if (change_num > 0) {
-                return "(" + "+" + change_num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ")";
+                return "(" + "+" + change_num.toLocaleString(x.locale) + ")";
               } else {
-                return "(" + change_num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ")";
+                return "(" + change_num.toLocaleString(x.locale) + ")";
               }
             })
             .style("color", change_color);

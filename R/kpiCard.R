@@ -6,13 +6,16 @@
 #'
 #' @export
 kpiCard <- function(title, new.value, old.value,
+                    color.up = "green", color.down = "red",
                     width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
     title = title,
     new_value = new.value,
-    old_value = old.value
+    old_value = old.value,
+    color_up = color.up,
+    color_down = color.down
   )
 
   # create widget

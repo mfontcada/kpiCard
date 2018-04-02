@@ -18,10 +18,10 @@ HTMLWidgets.widget({
         var change_color = "black",
           change_symbol = "";
         if (change_pt > 0) {
-          change_color = "green";
+          change_color = x.color_up;
           change_symbol = "&#9650;";
         } else if (change_pt < 0) {
-          change_color = "red";
+          change_color = x.color_down;
           change_symbol = "&#9660;";
         }
 

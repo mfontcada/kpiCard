@@ -17,10 +17,10 @@ HTMLWidgets.widget({
         var change_pt = change_num / x.old_value * 100;
         var change_color = "black",
           change_symbol = "";
-        if (change_pt > 0) {
+        if (change_num > 0) {
           change_color = x.color_up;
           change_symbol = "&#9650;";
-        } else if (change_pt < 0) {
+        } else if (change_num < 0) {
           change_color = x.color_down;
           change_symbol = "&#9660;";
         }

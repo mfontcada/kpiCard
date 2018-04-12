@@ -101,7 +101,13 @@ HTMLWidgets.widget({
             .style("padding-bottom", "6px")
             .style("text-align", "center")
             .style("font-size", "1.2em")
-            .html(change_symbol + " " + (Math.round(Math.abs(change_pt) * 10) / 10).toLocaleString(x.locale) + "%")
+            .html(function() {
+              if (isNaN(change_pt)) {
+                return "- %";
+              } else {
+                return change_symbol + " " + (Math.round(Math.abs(change_pt) * 10) / 10).toLocaleString(x.locale) + "%";
+              }
+            })
             .style("color", change_color);
 
         // Difference

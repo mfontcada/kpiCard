@@ -36,16 +36,57 @@ HTMLWidgets.widget({
 
         // Header
         var header = card.append("div")
+          .style("position", "relative")
           .style("width", "100%")
           .style("height", "32px")
           .style("border-bottom", "1px solid #DDD");
 
         // Title
         var title = header.append("div")
+          .style("float", "left")
           .style("padding", "8px")
           .style("line-height", "16px")
           .style("font-size", "0.8em")
           .html(x.title);
+
+        // Info
+        var info_button = header.append("div")
+          .attr("id", "infoButton")
+          .style("float", "right")
+          .style("padding", "4px")
+          .style("width", "12px")
+          .style("height", "12px")
+          .style("border", "1px solid #CCC")
+          .style("border-radius", "50%")
+          .style("line-height", "12px")
+          .style("font-size", "0.75em")
+          .style("font-weight", "bold")
+          .style("text-align", "center")
+          .style("cursor", "pointer")
+          .style("color", "#CCC")
+          .on("click", function(){
+            var active = infoText.active ? false : true,
+            newOpacity = active ? 1 : 0;
+            newColor = active ? "#000" : "#CCC";
+            d3.select("#infoText").style("opacity", newOpacity);
+            d3.select("#infoButton")
+              .style("color", newColor)
+              .style("border", "1px solid " + newColor);
+            infoText.active = active;
+          })
+          .html("i");
+        var info_text = header.append("div")
+          .attr("id", "infoText")
+          .style("position", "absolute")
+          .style("top", "36px")
+          .style("right", "0")
+          .style("border", "1px solid #DDD")
+          .style("padding", "12px")
+          .style("text-align", "center")
+          .style("font-size", "0.8em")
+          .style("box-shadow", "3px 6px 6px #CCC")
+          .style("opacity", 0)
+          .html(x.info);
 
         // Content
         var content = card.append("div")

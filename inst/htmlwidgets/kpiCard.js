@@ -87,6 +87,7 @@ HTMLWidgets.widget({
           .style("padding", "12px")
           .style("text-align", "center")
           .style("font-size", "0.8em")
+          .style("background-color", "#FFF")
           .style("box-shadow", "3px 6px 6px #CCC")
           .style("opacity", 0)
           .html(x.info);

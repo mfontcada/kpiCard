@@ -54,7 +54,7 @@ HTMLWidgets.widget({
           .attr("class", "info")
           .style("display", function() {
             if (x.info === null) {
-              return(none);
+              return("none");
             } else {
               return("block");
             }

@@ -50,33 +50,31 @@ HTMLWidgets.widget({
           .html(x.title);
 
         // Info
-        var info_button = header.append("div")
-          .attr("id", "infoButton")
+        var info = header.append("div")
+          .attr("class", "info");
+        var info_button = info.append("div")
+          .attr("class", "infoButton")
           .style("float", "right")
           .style("padding", "4px")
           .style("width", "12px")
           .style("height", "12px")
-          .style("border", "1px solid #CCC")
-          .style("border-radius", "50%")
           .style("line-height", "12px")
-          .style("font-size", "0.75em")
+          .style("font-size", "0.8em")
           .style("font-weight", "bold")
           .style("text-align", "center")
           .style("cursor", "pointer")
           .style("color", "#CCC")
-          .on("click", function(){
-            var active = infoText.active ? false : true,
-            newOpacity = active ? 1 : 0;
-            newColor = active ? "#000" : "#CCC";
-            d3.select("#infoText").style("opacity", newOpacity);
-            d3.select("#infoButton")
-              .style("color", newColor)
-              .style("border", "1px solid " + newColor);
-            infoText.active = active;
+          .on("mouseover", function() {
+            var infoText = d3.select(this.parentNode).selectAll(".infoText");
+            infoText.style("opacity", 1);
           })
-          .html("i");
-        var info_text = header.append("div")
-          .attr("id", "infoText")
+          .on("mouseout", function() {
+            var infoText = d3.select(this.parentNode).selectAll(".infoText");
+            infoText.style("opacity", 0);
+          })
+          .html("?");
+        var info_text = info.append("div")
+          .attr("class", "infoText")
           .style("position", "absolute")
           .style("top", "36px")
           .style("right", "0")

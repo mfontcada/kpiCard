@@ -51,19 +51,24 @@ HTMLWidgets.widget({
 
         // Info
         var info = header.append("div")
-          .attr("class", "info");
+          .attr("class", "info")
+          .style("display", function() {
+            if (x.info === null) {
+              return(none);
+            } else {
+              return("block");
+            }
+          });
         var info_button = info.append("div")
           .attr("class", "infoButton")
           .style("float", "right")
-          .style("padding", "4px")
-          .style("width", "12px")
-          .style("height", "12px")
-          .style("line-height", "12px")
+          .style("padding", "8px")
+          .style("line-height", "16px")
           .style("font-size", "0.8em")
           .style("font-weight", "bold")
           .style("text-align", "center")
           .style("cursor", "pointer")
-          .style("color", "#CCC")
+          .style("color", "#AAA")
           .on("mouseover", function() {
             var infoText = d3.select(this.parentNode).selectAll(".infoText");
             infoText.style("opacity", 1);

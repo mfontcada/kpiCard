@@ -80,6 +80,7 @@ HTMLWidgets.widget({
           .html("?");
         var info_text = info.append("div")
           .attr("class", "infoText")
+          .style("z-index", 999)
           .style("position", "absolute")
           .style("top", "36px")
           .style("right", "0")

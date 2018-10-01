@@ -115,7 +115,13 @@ HTMLWidgets.widget({
             .style("padding-bottom", "6px")
             .style("text-align", "center")
             .style("font-size", "1.2em")
-            .html(x.new_value.toLocaleString(x.locale));
+            .html(function() {
+              if (x.percent === true) {
+                return Math.round(x.new_value * 100).toLocaleString(x.locale) + "%";
+              } else {
+                return x.new_value.toLocaleString(x.locale);
+              }
+            });
 
         // Old value
         values.append("div")
@@ -128,7 +134,13 @@ HTMLWidgets.widget({
             .style("padding-top", "3px")
             .style("text-align", "center")
             .style("font-size", "0.8em")
-            .html(x.old_value.toLocaleString(x.locale));
+            .html(function() {
+              if (x.percent === true) {
+                return Math.round(x.old_value * 100).toLocaleString(x.locale) + "%";
+              } else {
+                return x.old_value.toLocaleString(x.locale);
+              }
+            });
 
         // Change
         var change = content.append("div")

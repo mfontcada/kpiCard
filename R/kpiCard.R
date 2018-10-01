@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-kpiCard <- function(title, new.value, old.value, info = NULL,
+kpiCard <- function(title, new.value, old.value, info = NULL, percent = FALSE,
                     color.up = "green", color.down = "red", locale = "es",
                     width = NULL, height = NULL, elementId = NULL) {
 
@@ -15,6 +15,7 @@ kpiCard <- function(title, new.value, old.value, info = NULL,
     new_value = new.value,
     old_value = old.value,
     info = info,
+    percent = percent,
     color_up = color.up,
     color_down = color.down,
     locale = locale

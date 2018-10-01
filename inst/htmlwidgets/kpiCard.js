@@ -71,11 +71,11 @@ HTMLWidgets.widget({
           .style("color", "#AAA")
           .on("mouseover", function() {
             var infoText = d3.select(this.parentNode).selectAll(".infoText");
-            infoText.style("opacity", 1);
+            infoText.style("display", "block");
           })
           .on("mouseout", function() {
             var infoText = d3.select(this.parentNode).selectAll(".infoText");
-            infoText.style("opacity", 0);
+            infoText.style("display", "none");
           })
           .html("?");
         var info_text = info.append("div")
@@ -90,7 +90,7 @@ HTMLWidgets.widget({
           .style("font-size", "0.8em")
           .style("background-color", "#FFF")
           .style("box-shadow", "3px 6px 6px #CCC")
-          .style("opacity", 0)
+          .style("display", "none")
           .html(x.info);
 
         // Content

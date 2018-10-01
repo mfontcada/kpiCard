@@ -25,6 +25,10 @@ HTMLWidgets.widget({
           change_symbol = "&#9660;";
         }
 
+        if (x.percent === true) {
+          change_num = Math.round(change_num * 1000) / 10;
+        }
+
         // Remove previous
         el.innerHTML = "";
 
@@ -117,7 +121,7 @@ HTMLWidgets.widget({
             .style("font-size", "1.2em")
             .html(function() {
               if (x.percent === true) {
-                return Math.round(x.new_value * 100).toLocaleString(x.locale) + "%";
+                return (Math.round(x.new_value * 1000) / 10).toLocaleString(x.locale) + "%";
               } else {
                 return x.new_value.toLocaleString(x.locale);
               }
@@ -136,7 +140,7 @@ HTMLWidgets.widget({
             .style("font-size", "0.8em")
             .html(function() {
               if (x.percent === true) {
-                return Math.round(x.old_value * 100).toLocaleString(x.locale) + "%";
+                return (Math.round(x.old_value * 1000) / 10).toLocaleString(x.locale) + "%";
               } else {
                 return x.old_value.toLocaleString(x.locale);
               }

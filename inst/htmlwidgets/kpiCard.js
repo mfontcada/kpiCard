@@ -27,6 +27,8 @@ HTMLWidgets.widget({
 
         if (x.percent === true) {
           change_num = Math.round(change_num * 1000) / 10;
+        } else {
+          change_num = Math.round(change_num * 10) / 10;
         }
 
         // Remove previous

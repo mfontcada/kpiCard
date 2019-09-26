@@ -13,7 +13,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
 
         // Recover data
-        var change_num = x.new_value - x.old_value;
+        var change_num = Math.round((x.new_value - x.old_value) * 10) / 10;
         var change_pt = change_num / x.old_value * 100;
         var change_color = "black",
           change_symbol = "";
